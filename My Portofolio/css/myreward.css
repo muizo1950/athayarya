@@ -1,0 +1,810 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+                                    /* Bagian loader setiap berpindah halaman*/
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Animasi Lingkaran Berputar */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ffc1e3; 
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+
+/* pengaturan gerakan putaran pada loading */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* class untuk menyembunyikan loader */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+                                /* Bagian akhir setting loader */
+
+
+
+
+
+
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #fdfaf6;
+    color: #4a4a4a;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+                                                /* BAGIAN WAVE HEADER  */
+.creative-header {
+    position: relative;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    padding: 80px 20px 120px; /* padding bawah lebih besar untuk ruang wave */
+    text-align: center;
+    overflow: hidden;
+    border-bottom: none; 
+}
+
+.header-content {
+    position: relative;
+    z-index: 5;
+}
+
+.creative-header h1 {
+    font-family: "Limelight", sans-serif;
+    font-size: 3.5rem;
+    color: #be1572;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.header-desc {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.5rem;
+    color: #75567a;
+    line-height: 1.6;
+}
+
+.highlight {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0 10px;
+    border-radius: 5px;
+    color: #be1572;
+    font-weight: bold;
+}
+
+/* Dekorasi Bola Abstrak */
+.header-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 1;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    background: #ce93d8;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 50px;
+    right: -30px;
+    background: #f48fb1;
+}
+
+/* wave header (terbalik dari footer) */
+.header-wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.header-wave-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 60px;
+}
+
+.header-wave-bottom .shape-fill {
+    fill: #e0f2f1; /* menyesuaikan dengan warna nav bg */
+}
+
+
+
+
+
+                                        /* Bagian Navigasi- Floating Glassmorphism */
+nav {
+    background-color: #e0f2f1; 
+    position: sticky;
+    top: 10;
+    z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #5b2f63;
+    font-family: "Sansation", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+
+/* efek hover tulisan */
+nav a:hover {
+    color: #be1572;
+    transform: translateY(-2px);
+}
+
+
+/* indikator garis bawah animasi */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 5px;
+    left: 50%;
+    background: #be1572;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+nav a:hover::after {
+    width: 60px; /* garis muncul saat di-hover */
+}
+
+/* Link Aktif (halaman saat ini) */
+nav a.active {
+    background: #be1572;
+    color: white;
+}
+
+nav a.active::after {
+    display: none;
+}
+
+
+
+
+
+
+
+
+/* Layout Utama */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    width: 100%;           /* menjamin main selebar layar */
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+
+
+
+
+
+
+                                /* --- Media Query untuk Responsivitas di HP --- */
+@media screen and (max-width: 468px) {
+
+    /* mencegah seluruh halaman geser ke kanan */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    main {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    nav {
+        width: 95%;
+        top: 10px;
+    }
+    
+    nav ul {
+        flex-direction: row; /* agar tetap horizontal di HP dan ringkas */
+        justify-content: space-around;
+        padding: 5px;
+    }
+
+    nav a {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    
+    nav a:hover::after {
+        width: 15px;
+    }
+
+    .journey-container {
+        margin: 20px auto;
+        padding: 0 10px;
+        padding-left: 45px;
+    }
+
+    .timeline-header {
+        padding-right: 45px;
+    }
+
+    .timeline-box {
+        overflow: visible;
+    }
+
+    .timeline-box::before {
+        left: -25px;
+    }
+    
+    .timeline-box::after {
+        left: -32px;
+
+    }
+
+    .timeline-header h3 {
+        font-size: 1rem; /* ukuran teks lebih proporsional untuk HP */
+    }
+
+    
+    .expand-btn {
+        width: 35px;
+        height: 35px;
+        right: -5px; /* posisi agar pas di pinggir */
+    }
+
+    .footer-wave svg {
+        height: 40px;
+    }
+
+
+    .creative-header h1 {
+        font-size: 2.2rem;
+    }
+    .creative-header {
+        padding: 60px 15px 100px;
+    }
+
+}
+
+
+
+
+
+
+                                    /* UNTUK HALAMAN REWARD */
+.journey-container {
+    position: relative;
+    width: 100%;           
+    max-width: 1000px;
+    margin: 40px auto;     
+    padding: 0 20px;
+    padding-left: 50px; /* ruang untuk garis timeline */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.timeline-box {
+    position: relative;
+    width: 100%;
+    max-width: 100%; /* agar tidak pernah lebih dari layar */
+    background: #ffffff;
+    border: 3px solid #fce4ec;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: all 0.4s ease;
+    overflow: visible; /* agar garis di luar kotak kelihatan */
+    box-sizing: border-box; /* agar padding tidak menambah lebar kotak */
+}
+
+
+
+/* Membuat Garis Vertikal */
+.timeline-box::before {
+    content: "";
+    position: absolute;
+    left: -30px; 
+    top: 0;
+    width: 4px;
+    height: calc(100% + 25px); /* menambah tinggi agar menyambung ke box bawahnya */
+    background: #f8bbd0; 
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Membuat Titik (Bullet) */
+.timeline-box::after {
+    content: "";
+    position: absolute;
+    left: -37px; /* agar titik berada tepat di tengah garis */
+    top: 30px;   /* sejajar dengan bagian atas box (sesuai padding box) */
+    width: 18px;
+    height: 18px;
+    background: #be1572; 
+    border: 4px solid #fff;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* menghilangkan garis pada box terakhir agar tidak menjuntai ke footer */
+.timeline-box:last-child::before {
+    height: 100%;
+}
+
+/* saat timeline-box aktif (terbuka), icon panah berputar 180 derajat */
+.timeline-box.active .expand-btn i {
+    transform: rotate(180deg);
+}
+
+/* menghapus rotasi pada tombolnya sendiri agar tidak bentrok dengan icon */
+.timeline-box.active .expand-btn {
+    transform: translateY(-50%); 
+}
+
+/* Efek saat Box Aktif  */
+.timeline-box.active::before {
+    background: #ce93d8; /* bakal berubah jadi ungu saat dibuka boxnya */
+}
+
+
+.timeline-header {
+    position: relative;
+    padding-right: 50px;
+}
+
+.year-badge {
+    color: #ce93d8;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+
+                                /* Tombol navigasi bulat dengan icon panah */
+.expand-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #d1b1d6; 
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;            /* menggunakan flex agar icon di tengah */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ukuran dan warna icon di dalam tombol */
+.expand-btn i {
+    color: white;
+    font-size: 1.2rem;
+    transition: transform 0.4s ease; /* animasi putar icon */
+}
+
+
+.expand-btn:hover {
+    background: #be1572; /* warna lebih gelap saat di-hover */
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+
+/* efek memanjang ke bawah */
+.expand-content {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.timeline-box.active {
+    border-color: #ffc1e3;
+    box-shadow: 0 0 15px rgba(29, 2, 17, 0.3);
+}
+
+.timeline-box.active .expand-content {
+    max-height: 200000px; /* agar bisa menampung banyak sertif :P */
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #fc5d92;
+}
+
+.timeline-box.active .expand-btn {
+    transform: translateY(-50%) rotate(360deg);
+}
+
+
+
+
+
+
+                                    /* Grid Sertifikat - Mode Berjejer Horizontal */
+.cert-grid {
+    display: flex;                  /* mengubah grid menjadi flex agar berjejer ke samping */
+    flex-wrap: nowrap;              /* memaksa item tetap satu baris, tidak turun ke bawah */
+    gap: 15px;                      /* jarak antar kartu sertifikat */
+    overflow-x: auto;               /* memungkinkan scroll horizontal jika sertifikat banyak */
+    padding: 10px 5px;              /* memberi ruang agar bayangan (shadow) tidak terpotong */
+    scroll-behavior: smooth;        /* agar pergerakan scroll terasa halus */
+    -webkit-overflow-scrolling: touch; /*optimasi scroll di HP */
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+                                            /* Untuk tampilan scrollbar */
+.cert-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cert-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.cert-grid::-webkit-scrollbar-thumb {
+    background: #ce93d8; 
+    border-radius: 10px;
+}
+
+.cert-card {
+    flex: 0 0 180px;  /* biar lebih pas di HP */
+    max-width: 80vw;  
+    background: #fff;
+    border: 3px solid #ffc1e3;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* efek outline menyala saat hover */
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffc1e3;
+    box-shadow: 0 0 12px rgba(131, 68, 101, 0.6);
+}
+
+.img-wrapper img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+
+.cert-date {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 10px 0;
+}
+
+
+
+
+
+
+                                /* Bagian Tombol Selengkapnya di Tengah Bawah Sertifikat */
+.more-btn {
+    display: inline-block;
+    padding: 6px 20px;
+    background: #fff;
+    border: 2px solid #ce93d8;
+    color: #75567a;
+    border-radius: 12px; /* radius tombol */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: 0.4s;
+}
+
+.more-btn:hover {
+    background: #ce93d8;
+    color: #fff;
+}
+
+/* Modal Background */
+.modal {
+    display: none; /* sembunyi secara default */
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); /* Putih transparan */
+    backdrop-filter: blur(5px); /* EFEK BURAM SAAT MENEKAN "SELENGKAPNYA" */
+    justify-content: center;
+    align-items: center;
+}
+
+/* container untuk mengelompokkan navigasi dan dots di bawah gambar */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#modal-img {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    object-fit: contain;
+    background: white;
+}
+
+
+
+
+
+
+
+                                        /* Tombol Close Silang */
+.close-modal {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #5b2f63;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+/* navigasi panah di bagian bawah */
+.prev-btn, .next-btn {
+    position: static; 
+    transform: none; /* HAPUS TRANSFORM */
+    background: none; /* hapus background tombol */
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #271a29;
+    font-size: 30px; /* ukuran panah */
+}
+
+
+.prev-btn:hover, .next-btn:hover {
+    color: #796b72; /* warna saat di-hover */
+}
+
+
+/* Indikator Titik (Dots) bagian sertif yg mempunyai 2 halaman, wajah sertif dan halaman baliknya 
+yang terkadang isinya nilai atau informasi seputar kegiatan/lomba*/
+.dots-container {
+    margin-top: 0; 
+    display: flex;
+    gap: 5px;
+}
+
+
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #8a8a8a;
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.dot.active { 
+    background-color: #000000; 
+}
+
+
+.controls-container {
+    display: none; /* akan diubah jadi 'flex' oleh JS */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    
+    /* gradasi bagian background dengan perpaduan warna */
+    background: linear-gradient(135deg, 
+        #99cdd8 0%,  
+        #b9b2f3 100%
+    );
+
+    
+    padding: 10px 25px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /*  bayangan agar mempunyai kesan timbul */
+}
+
+
+
+
+
+
+
+
+
+
+
+                                        /* BAGIAN Footer Styling */
+.creative-footer {
+    position: relative;
+    background: #fce4ec; 
+    padding-top: 100px;
+    margin-top: 80px;
+    width: 100%;
+}
+
+.footer-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 70px;
+}
+
+.footer-wave .shape-fill {
+    fill: #fdfaf6; /* warna bg main agar terlihat spt menyatu */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 40px;
+    gap: 25px;
+}
+
+.footer-logo {
+    font-family: "Limelight", sans-serif;
+    font-size: 2rem;
+    color: #be1572;
+    margin-bottom: 5px;
+}
+
+.footer-quote {
+    font-family: "Patrick Hand", cursive;
+    font-size: 1.2rem;
+    color: #75567a;
+    font-style: italic;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #ce93d8;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.social-icon:hover {
+    background: #be1572;
+    color: white;
+    transform: translateY(-10px) rotate(8deg);
+    box-shadow: 0 10px 20px rgba(190, 21, 114, 0.2);
+}
+
+.footer-bottom {
+    border-top: 1px dashed #f8bbd0;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #9e7e9b;
+}

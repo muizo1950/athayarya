@@ -1,0 +1,488 @@
+
+.bitcount-grid-double {
+  font-family: "Bitcount Grid Double", system-ui;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+  
+                                    /* Bagian loader setiap berpindah halaman*/
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Aaimasi lingkaran berputar */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ffc1e3; 
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* class untuk menyembunyikan loader */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #fdfaf6;
+    color: #4a4a4a;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+                                                /* BAGIAN WAVE HEADER  */
+.creative-header {
+    position: relative;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    padding: 80px 20px 120px; /* padding bawah lebih besar untuk ruang wave */
+    text-align: center;
+    overflow: hidden;
+    border-bottom: none; 
+}
+
+.header-content {
+    position: relative;
+    z-index: 5;
+}
+
+.creative-header h1 {
+    font-family: "Limelight", sans-serif;
+    font-size: 3.5rem;
+    color: #be1572;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.header-desc {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.5rem;
+    color: #75567a;
+    line-height: 1.6;
+}
+
+.highlight {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0 10px;
+    border-radius: 5px;
+    color: #be1572;
+    font-weight: bold;
+}
+
+/* Dekorasi Bola Abstrak */
+.header-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: 1;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    background: #ce93d8;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 50px;
+    right: -30px;
+    background: #f48fb1;
+}
+
+/* wave header (terbalik dari footer) */
+.header-wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.header-wave-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 60px;
+}
+
+.header-wave-bottom .shape-fill {
+    fill: #e0f2f1; /* menyesuaikan dengan warna nav bg */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+                                        /* Bagian Navigasi- Floating Glassmorphism */
+nav {
+    background-color: #e0f2f1; 
+    position: sticky;
+    top: 10;
+    z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 10px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #5b2f63;
+    font-family: "Sansation", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+
+/* efek hover tulisan */
+nav a:hover {
+    color: #be1572;
+    transform: translateY(-2px);
+}
+
+
+/* indikator garis bawah animasi */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 5px;
+    left: 50%;
+    background: #be1572;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+nav a:hover::after {
+    width: 60px; /* garis muncul saat di-hover */
+}
+
+
+nav a.active {
+    background: #be1572;
+    color: white;
+}
+
+nav a.active::after {
+    display: none;
+}
+
+/* layout utama dengan Flexbox */
+main {
+    flex: 1;
+    display: flex;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+
+/* styling utk halaman experience kosong */
+.experience-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    text-align: center;
+}
+
+.coming-soon-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    border: 3px dashed #f8bbd0;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.construction-icon {
+    font-size: 4rem;
+    color: #be1572;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.coming-soon-wrapper h2 {
+    font-family: "Limelight", sans-serif;
+    color: #75567a;
+    margin-bottom: 15px;
+}
+
+.coming-soon-wrapper p {
+    font-family: "Patrick Hand", cursive;
+    font-size: 1.2rem;
+    color: #9e7e9b;
+    margin-bottom: 25px;
+}
+
+/* Progress Bar */
+.progress-container {
+    background: #f1f1f1;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #ce93d8, #be1572);
+    width: 25%;      /* leevel progres ku/progres menyusun konsep */
+    height: 100%;
+    border-radius: 10px;
+    animation: progressFill 3s ease-in-out infinite;
+}
+
+@keyframes progressFill {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.loading-text {
+    font-size: 0.8rem;
+    color: #be1572;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-back {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 10px 25px;
+    background: #e0f2f1;
+    color: #5b2f63;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background: #be1572;
+    color: white;
+}
+
+
+
+
+
+
+
+
+                                            /* Responsif untuk HP  */
+@media screen and (max-width: 468px) {
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr); /* jadi 2 kolom di tablet */
+    }
+
+    main {
+        flex-direction: column; /* stack konten secara vertikal di HP */
+    }
+
+    nav {
+        width: 95%;
+        top: 10px;
+    }
+    
+    nav ul {
+        flex-direction: row; /* agar tetap horizontal di HP dan ringkas */
+        justify-content: space-around;
+        padding: 5px;
+    }
+
+    nav a {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    
+    nav a:hover::after {
+        width: 15px;
+    }
+
+     .footer-wave svg {
+        height: 40px;
+    }
+
+    .creative-header h1 {
+        font-size: 2.2rem;
+    }
+    .creative-header {
+        padding: 60px 15px 100px;
+    }
+}
+
+
+
+
+
+
+                                        /* BAGIAN Footer Styling */
+.creative-footer {
+    position: relative;
+    background: #fce4ec; 
+    padding-top: 100px;
+    margin-top: 80px;
+    width: 100%;
+}
+
+.footer-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 70px;
+}
+
+.footer-wave .shape-fill {
+    fill: #fdfaf6; /* warna bg agar terlihat seperti menyatu */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 40px;
+    gap: 25px;
+}
+
+.footer-logo {
+    font-family: "Limelight", sans-serif;
+    font-size: 2rem;
+    color: #be1572;
+    margin-bottom: 5px;
+}
+
+.footer-quote {
+    font-family: "Patrick Hand", cursive;
+    font-size: 1.2rem;
+    color: #75567a;
+    font-style: italic;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: #ce93d8;
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.social-icon:hover {
+    background: #be1572;
+    color: white;
+    transform: translateY(-10px) rotate(8deg);
+    box-shadow: 0 10px 20px rgba(190, 21, 114, 0.2);
+}
+
+.footer-bottom {
+    border-top: 1px dashed #f8bbd0;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #9e7e9b;
+}
